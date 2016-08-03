@@ -11,7 +11,7 @@ import { contentHeaders } from '../common/headers';
   styles: [ './src/startPage/startPage.css' ]
 })
 export class StartPage {
-  name = 'ES6';
+  name = 'my test';
   constructor(public router: Router, public http: Http) {
   }
 }

@@ -24,6 +24,6 @@ export class Home {
 
   logout() {
     localStorage.removeItem('id_token');
-    this.router.navigate(['/login']);
+    this.router.navigate(['/startPage']);
   }
 }
