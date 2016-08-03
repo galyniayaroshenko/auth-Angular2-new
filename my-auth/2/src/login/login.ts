@@ -3,6 +3,9 @@ import { Router, ROUTER_DIRECTIVES } from '@angular/router';
 import { CORE_DIRECTIVES, FORM_DIRECTIVES } from '@angular/common';
 import { Http, Headers } from '@angular/http';
 import { contentHeaders } from '../common/headers';
+import { LoginValidator } from './loginValidator';
+
+import {Control, ControlGroup, FormBuilder, Validators} from '@angular/common';
 
 const styles   = require('./login.css');
 const template = require('./login.html');
@@ -14,7 +17,13 @@ const template = require('./login.html');
   styles: [ styles ]
 })
 export class Login {
-  constructor(public router: Router, public http: Http) {
+  form: ControlGroup;
+  constructor(public router: Router, public http: Http, formbuilder: FormBuilder) {
+    this.form = formbuilder.group({
+                username: ['', Validators.compose([Validators.required, 
+                               LoginValidator.underscorecheck])],
+                password: []
+            })
   }
 
   login(event, username, password) {

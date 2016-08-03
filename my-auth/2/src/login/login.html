@@ -1,15 +1,40 @@
-<div class="login jumbotron center-block">
-  <h1>Login</h1>
-  <form role="form" (submit)="login($event, username.value, password.value)">
-  <div class="form-group">
-    <label for="username">Username</label>
-    <input type="text" #username class="form-control" id="username" placeholder="Username">
-  </div>
-  <div class="form-group">
-    <label for="password">Password</label>
-    <input type="password" #password class="form-control" id="password" placeholder="Password">
-  </div>
-  <button type="submit" class="btn btn-default">Submit</button>
-    <a [routerLink]="['/signup']">Click here to Signup</a>
+<form [ngFormModel]="form" role="form" (submit)="login($event, username.value, password.value)">
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    Login
+                </div>
+                <div class="panel-body">
+                    <div class="form-group">
+                        <label class="control-label" for="username">Username</label>
+                        <input class="form-control" type="text" id="username" ngControl="username" #username="ngForm" placeholder="Username">
+                    </div>
+                    <div *ngIf="username.touched && username.errors">
+
+                        <div *ngIf="username.errors.underscorenotfound && !username.errors.required" class="alert alert-danger">
+                            <strong>Username should have an underscore</strong>
+                        </div>
+
+                        <div *ngIf="username.errors.required" class="alert alert-danger">
+                            <strong>Username is required</strong>
+                        </div>
+                        <div *ngIf="username.errors.usernotunique && !username.errors.required" class="alert alert-danger">
+                            <strong>Username is already present</strong>
+                        </div>
+
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label" for="password">Password</label>
+                        <input class="form-control" type="password" id="password" ngControl="password" #password="ngForm" placeholder="Password">
+                    </div>
+                    
+                    <button type="submit" class="btn btn-default">Submit</button>
+                    <a [routerLink]="['/signup']">Click here to Signup</a>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
 </form>
-</div>

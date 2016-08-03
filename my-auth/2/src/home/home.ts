@@ -14,10 +14,6 @@ const template = require('./home.html');
   styles: [ styles ]
 })
 export class Home {
-  jwt: string;
-  decodedJwt: string;
-  response: string;
-  api: string;
 
   constructor(public router: Router, public http: Http, public authHttp: AuthHttp) {
   }
