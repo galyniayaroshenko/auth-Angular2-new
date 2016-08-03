@@ -1,7 +1,4 @@
 <form [ngFormModel]="form" role="form" (submit)="login($event, username.value, password.value)">
-    <div class="row">
-        <div class="col-md-4"></div>
-        <div class="col-md-4">
             <div class="panel panel-primary">
                 <div class="panel-heading">
                     Login
@@ -27,7 +24,7 @@
                     </div>
                     <div class="form-group">
                         <label class="control-label" for="password">Password</label>
-                        <input class="form-control" type="password" id="password" ngControl="password" #password="ngForm" placeholder="Password">
+                        <input class="form-control" type="password" id="password" ngControl="password" #password="ngForm" placeholder="Password" required>
                     </div>
                     
                     <button type="submit" class="btn btn-default">Submit</button>
@@ -35,6 +32,4 @@
                     
                 </div>
             </div>
-        </div>
-    </div>
 </form>

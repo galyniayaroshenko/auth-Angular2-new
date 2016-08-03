@@ -1,28 +1,47 @@
-<div class="signup center-block jumbotron">
-  <h1>Signup</h1>
-  <form role="form" (submit)="signup($event, username.value, password.value)">
-  <div class="form-group">
-    <label for="username">Username</label>
-    <input type="text" #username class="form-control" id="username" placeholder="Username">
+<form [ngFormModel]="form" role="form" (submit)="signup($event, username.value, password.value)">
+          <div class="panel panel-primary">
+                <div class="panel-heading">
+                    Signup
+                </div>
+                <div class="panel-body">
+                  <div class="form-group">
+                        <label class="control-label" for="username">Username</label>
+                        <input class="form-control" type="text" id="username" ngControl="username" #username="ngForm" placeholder="Username">
+                    </div>
+                    <div *ngIf="username.touched && username.errors">
+                        <div *ngIf="username.errors.underscorenotfound && !username.errors.required" class="alert alert-danger">
+                            <strong>Username should have an underscore</strong>
+                        </div>
+                        <div *ngIf="username.errors.required" class="alert alert-danger">
+                            <strong>Username is required</strong>
+                        </div>
+                        <div *ngIf="username.errors.usernotunique && !username.errors.required" class="alert alert-danger">
+                            <strong>Username is already present</strong>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label" for="password">Password</label>
+                        <input class="form-control" type="password" id="password" ngControl="password" #password="ngForm">
+                    </div>
+                    <div class="form-group">
+                      <label for="name">Name</label>
+                      <input type="text" #name class="form-control" id="name" placeholder="Name">
+                    </div>
+                    <div class="form-group">
+                      <label for="surname">Surname</label>
+                      <input type="text" #surname class="form-control" id="surname" placeholder="Surname">
+                    </div>
+                    <div class="form-group">
+                      <label for="email">Email</label>
+                      <input type="text" #email class="form-control" id="email" placeholder="Email" required>
+                    </div>
+                    <div class="form-group">
+                      <label for="date">Date of the birthday</label>
+                      <input type="date" #date class="form-control" id="date" placeholder="Date">
+                    </div>
+                    
+                    <button type="submit" class="btn btn-default">Submit</button>
+                    
+                  </div>
   </div>
-  <div class="form-group">
-    <label for="password">Password</label>
-    <input type="password" #password class="form-control" id="password" placeholder="Password">
-  </div>
-  
-  <!--<div class="form-group">
-    <label for="password">Email</label>
-    <input type="email" #password class="form-control" id="email" placeholder="Email">
-  </div>
-  <div class="form-group">
-    <label for="password">Password</label>
-    <input type="password" #password class="form-control" id="password" placeholder="Password">
-  </div>
-  <div class="form-group">
-    <label for="password">Password</label>
-    <input type="password" #password class="form-control" id="password" placeholder="Password">
-  </div>-->
-  
-  <button type="submit" class="btn btn-default">Submit</button>
 </form>
-</div>

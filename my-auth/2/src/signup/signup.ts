@@ -3,6 +3,9 @@ import { Router } from '@angular/router';
 import { CORE_DIRECTIVES, FORM_DIRECTIVES } from '@angular/common';
 import { Http } from '@angular/http';
 import { contentHeaders } from '../common/headers';
+import { SignupValidator } from './signupValidator';
+
+import {Control, ControlGroup, FormBuilder, Validators} from '@angular/common';
 
 const styles   = require('./signup.css');
 const template = require('./signup.html');
@@ -14,7 +17,13 @@ const template = require('./signup.html');
   styles: [ styles ]
 })
 export class Signup {
-  constructor(public router: Router, public http: Http) {
+  form: ControlGroup;
+  constructor(public router: Router, public http: Http, formbuilder: FormBuilder) {
+    this.form = formbuilder.group({
+                username: ['', Validators.compose([Validators.required, 
+                               SignupValidator.underscorecheck])],
+                password: []
+            })
   }
 
   signup(event, username, password) {
