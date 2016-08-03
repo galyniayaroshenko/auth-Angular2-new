@@ -22,4 +22,9 @@ export class Home {
     localStorage.removeItem('id_token');
     this.router.navigate(['/startPage']);
   }
+  
+  getUser() {
+    
+    console.log(this.http.get('http://localhost:3001/users'));
+  }
 }
