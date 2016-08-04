@@ -1,7 +1,7 @@
 {
   "name": "angular2-authentication-sample",
   "version": "0.0.1",
-  "description": "This is a sample that shows how to add authentication to an Angular 2 (ng2) app",
+  "description": "",
   "main": "",
   "scripts": {
     "server": "cd backend && npm i && node server.js",
@@ -9,20 +9,6 @@
     "start": "npm run front",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/auth0/angular2-authentication-sample.git"
-  },
-  "contributors": [
-    "Martin Gontovnikas (http://gon.to) <martin@gon.to>",
-    "PatrickJS <github@gdi2290.com>",
-    "Ryan Chenkie <ryanchenkie@gmail.com>"
-  ],
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/auth0/angular2-authentication-sample/issues"
-  },
-  "homepage": "https://github.com/auth0/angular2-authentication-sample",
   "dependencies": {
     "@angular/common": "2.0.0-rc.3",
     "@angular/compiler": "2.0.0-rc.3",

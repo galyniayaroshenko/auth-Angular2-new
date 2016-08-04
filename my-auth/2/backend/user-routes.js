@@ -1,19 +1,23 @@
-import express from 'express';
-import _ from 'lodash';
-import config from './config';
-import jwt from 'jsonwebtoken';
+// import express from 'express';
+// import _ from 'lodash';
+// import config from './config';
+// import jwt from 'jsonwebtoken';
+var express          = require('express');
+var    _          = require('lodash');
+var    config          = require('./config');
+var    jwt          = require('jsonwebtoken');
 
 
-let app = module.exports = express.Router();
+var app = module.exports = express.Router();
 
 // XXX: This should be a database of users :).
-let users = [{
+var users = [{
   id: 1,
   username: 'gonto',
   password: 'gonto'
 }];
 
-let createToken = (user) => jwt.sign(_.omit(user, 'password'), config.secret, { expiresInMinutes: 60*5 });
+var createToken = (user) => jwt.sign(_.omit(user, 'password'), config.secret, { expiresInMinutes: 60*5 });
 
 app.post('/users', (req, res) => {
   if (!req.body.username || !req.body.password) {
@@ -23,7 +27,7 @@ app.post('/users', (req, res) => {
    res.status(400).send("A user with that username already exists");
   }
 
-  let profile = _.pick(req.body, 'username', 'password', 'extra');
+  var profile = _.pick(req.body, 'username', 'password', 'extra');
   profile.id = _.max(users, 'id').id + 1;
 
   users.push(profile);
@@ -50,7 +54,7 @@ app.post('/sessions/create', (req, res) => {
     res.status(400).send("You must send the username and the password");
   }
 
-  let user = _.find(users, {username: req.body.username});
+  var user = _.find(users, {username: req.body.username});
   if (!user) {
     res.status(401).send("The username or password don't match");
   }

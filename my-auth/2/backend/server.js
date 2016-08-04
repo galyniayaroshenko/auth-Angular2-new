@@ -33,7 +33,7 @@ if (process.env.NODE_ENV === 'development') {
 
 app.use(require('./user-routes'));
 
-let port = process.env.PORT || 3001;
+var port = process.env.PORT || 3001;
 
 http.createServer(app).listen(port, (err) => console.log('listening in http://localhost:' + port));
 

@@ -1,5 +1,5 @@
 StatusError = (msg, status) => {
-    let err = Error.call(this, msg);
+    var err = Error.call(this, msg);
     err.status = status;
     err.name = 'StatusError';
     return err;
